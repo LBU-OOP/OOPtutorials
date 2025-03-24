@@ -104,24 +104,34 @@ The problem comes when we want to do extra things, like sort our array. It’s e
 
 Say I have a class to represent a bike rider.
 ````
-public class Rider
-{
-    string name;
-    string team;
-    string category;
-    Int wattsPerKilo;   
-}
+	class Rider
+	{
+		
+		public String name;
+		public int wins;
+		public float wattsPerKilo;
+		
+		public Rider(String name, int wins, float wkg)
+		{
+			this.name = name;
+			this.wins = wins;
+			this.wattsPerKilo = wkg;
+		}
+		
+	}
 ````
-Interesting note: Watts Per Kilo is how string a rider is. A more muscular and heavy rider will generally be able to produce more watts because they have bigger muscles, but their extra weight will drag them back on the climbs.  Watts per kilo divides their weight by how much power they can produce (in watts). It give a better representation of how fast a rider will go (especially up hill).
-The question is, how do we sort riders? On name? On Team? On wattsPerKilo? The answer is any and maybe all depending on the circumstances. The upshot is that Java Standard Libraries (and it’s the same for all languages), while wanting to be helpful can’t possibly provide generic sorting abilities. But what they can do is allow us to tell it how to compare two objects and then sort based on that.
+_Interesting note: Watts Per Kilo is how string a rider is. A more muscular and heavy rider will generally be able to produce more watts because they have bigger muscles, but their extra weight will drag them back on the climbs.  Watts per kilo divides their weight by how much power they can produce (in watts). It give a better representation of how fast a rider will go (especially up hill).
+The question is, how do we sort riders? On name? On Team? On wattsPerKilo? The answer is any and maybe all depending on the circumstances. The upshot is that Java Standard Libraries (and it’s the same for all languages), while wanting to be helpful can’t possibly provide generic sorting abilities. But what they can do is allow us to tell it how to compare two objects and then sort based on that._
 
-So here we could provide a method to compare two Rider objects an any of those attributes. We could do one for each attribute and we could even do one that used multiple attributes. We can then use one of the standard collection classes to do the actual sorting. Enter ArrayList.
-ArrayList is one of the standard collection, there are others such as Vectors, Stacks, LinkedLists, HashTables etc. They all exploit polymorphism and the fact that all classes have a common root in an inheritance hierarchy.
-Remember that you can use the “extends” keyword to make one class inherit from another. But if you don’t extend anything then it is as if you had extended the class Object (I really wish they’d called it something else as we already use the term Object to mean something slightly different). In the Riders example above it is exactly as if we’d typed.
+So here we could provide a method to compare two Rider objects an any of those attributes. We could do one for each attribute and we could even do one that used multiple attributes (i.e. compare one attribute and if they are the same compare another, here we might put them in alpabetical order if their watsPerKilo is the same). We can then use one of the standard collection classes to do the actual sorting. Enter ArrayList.
+
+### ArrayLists
+ArrayList is one of the standard collection classes, there are others such as Vectors, Stacks, LinkedLists, HashTables etc. They all exploit polymorphism and the fact that all classes have a common root in an inheritance hierarchy.
+Remember that you can use the “extends” keyword (or the : in C++ and C#) to make one class inherit from another. But if you don’t extend anything then it is as if you had extended the [class Object](https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html) (I really wish they’d called it something else as we already use the term Object to mean something slightly different). In the Riders example above it is exactly as if we’d typed.
 ````
 public class Riders extends Object
 ````
-The upshot is that every Java class (same for C#/C++) every made or every will be made IS AN OBJECT. This means that we can have an array of Object and put any an object (small o) of any class at all in it. This is because a reference to Object can be attached to an object of any class. This means that languages like Java can provide standard collection classes because they are just collections of Object.
+The upshot is that every Java class (same for C#/C++) ever made or ever will be made IS AN Object (the class Object). This means that we can have an array of Object and put any an object (small o) of any class at all in it. This is because a reference to Object can be attached to an object of any class. This means that languages like Java can provide standard collection classes because they are just collections of Object.
 
 For our example I am going to compare on wattsPerKilo.
 ````
@@ -141,7 +151,9 @@ class RiderComparitor implements Comparator <Rider>
 ````
 Here I am implementing the Comparator interface. This ensures that I have the method that ArrayList is going to call to do the sorting. The <> notation allows us to restrict what we are operating on. ArrayList can work on anything because everything drives from Object, but we might not want to be so flexible, as being overly flexible can lead to unknown problems, always err on the side of clarity. So here we restrict it to classes of Rider and classes that extend from that by putting <Rider>.
 
-The code then says what to do with two Riders objects, which one wins, as it were? If the first of the two riders has the better wattsPerKilo then they win (1), if they have worse then they lose (-1), or if it’s the same it’s a draw (0). The ArrayList Sort method just repeatedly calls this method to see how it should compare two objects and it then sorts them (look up Bubble Sort if you are interested in the sorting algorithm itself). The key point is that it is up to you, the designer of the Rider class, how two riders objects are compared.
+The code then says what to do with two Riders objects, which one wins, as it were? If the first of the two riders has the better wattsPerKilo then they win (1), if they have worse then they lose (-1), or if it’s the same it’s a draw (0). The ArrayList Sort method just repeatedly calls this method to see how it should compare two objects and it then sorts them. The key point is that it is up to you, the designer of the Rider class, how two riders objects are compared.
+
+_Side Note. Look up Bubble Sort, this is the algorithm that ArrayList uses, you don't have to know how it works but as computer scientists you are probably interested. A bubble sort goes through an array comparing two elements at a time, if they are in the wrong order then it swaps them, it then repeats the process of doing the whole array for as many times as there are elements in the array. In this way if the element that should be at the top starts of at the bottom it will "bubble" to the top_. _
 
 The main code looks like this (the main example on the link above has more riders, I've removed them for brevity).
 ````
@@ -178,4 +190,5 @@ Once the riders have been added it uses a single line to sort it (ok here there 
 Collections.sort( riders, new RiderComparitor());
 ````
 This uses the code we saw above RiderComparitor to sort the riders ArrayList. It then loops around the riders ArrayList (we could have used a forach loop) and outputs each element, which is now in order of WattsPerKilo, with Tadej Pogacar at the top.
+Try and modify the sorting code so that it does a secondary sort on alphabetical order. You can then add some more riders to your program. Wout Van Aert, Mattieu Van Der Pool and Duncan Mullier are all good riders.
 
