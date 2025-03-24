@@ -86,6 +86,7 @@ We use this in a for loop to iterate one by one over each element, starting at t
 ````
 
 ## Arrays Of Objects
+[The full example code is here.](https://github.com/LBU-OOP/OOPexampleCode/blob/main/ArrayListExample.java)
 So far we have looked at simple arrays of cardinal datatypes (ok for those paying attention String isn’t actually a cardinal datatype but it is shortcutter to behave like one). We can also have arrays of Objects. So we could create a class Time and have an array of Times.
 
 Assuming a definition for Time.Java in our project.
@@ -132,7 +133,43 @@ class RiderComparitor implements Comparator <Rider>
 		
 	}
 ````
-Here I am implementing the Comparitor interface. This ensures that I have the method that ArrayList is going to call to do the sorting. The <> notation allows us to restrict what we are operating on. ArrayList can work on anything because everything drives from Object, but we might not want to be so flexible, as being overly flexible can lead to unknown problems, always err on the side of clarity. So here we restrict it to classes of Rider and classes that extend from that by putting <Rider>.
+Here I am implementing the Comparator interface. This ensures that I have the method that ArrayList is going to call to do the sorting. The <> notation allows us to restrict what we are operating on. ArrayList can work on anything because everything drives from Object, but we might not want to be so flexible, as being overly flexible can lead to unknown problems, always err on the side of clarity. So here we restrict it to classes of Rider and classes that extend from that by putting <Rider>.
 
 The code then says what to do with two Riders objects, which one wins, as it were? If the first of the two riders has the better wattsPerKilo then they win (1), if they have worse then they lose (-1), or if it’s the same it’s a draw (0). The ArrayList Sort method just repeatedly calls this method to see how it should compare two objects and it then sorts them (look up Bubble Sort if you are interested in the sorting algorithm itself). The key point is that it is up to you, the designer of the Rider class, how two riders objects are compared.
+
+The main code looks like this (the main example on the link above has more riders, I've removed them for brevity).
+````
+public ArrayListExample()
+	{
+		ArrayList<Rider> riders = new ArrayList();
+		Rider r1 = new Rider("Geraint Thomas", 11, 5.8f);
+		Rider r2 = new Rider("Simon Yates", 15, 5.9f);
+		Rider r3 = new Rider("Jonas Vingegaard", 14, 6.5f);
+		Rider r4 = new Rider("Tadej Pogacar",918,7.5f);
+		riders.add(r1);
+		riders.add(r2);
+		riders.add(r3);
+		riders.add(r4);
+		Collections.sort( riders, new RiderComparitor());
+		for(int i = 0; i<riders.size(); i++)
+		{
+			Rider r = (Rider) riders.get(i);
+			System.out.println("Rider = "+r.name+" has "+r.wattsPerKilo+" watts/kg");
+		}
+		
+	}
+	
+````
+An ArrayList is created that restricts entries to objects of Rider and classes that may extend Rider. 
+After the ArrayList line add the line.
+````
+Object o = new Object();
+riders.add(o);
+````
+You will get a syntax error on the second line because you are trying to add something above Rider in the hierarchy (an object of the class Object). In this case we want this to happen because this is an ArrayList with associated code to deal with Riders, we don’t want Strings and Times ever being in there (the key Software Engineering principle is that this code could be reused in the future and we don’t want our main code crashing in the future because it can’t compare wattsPerKilo of a Time!). If you remove the \<Rider\> from the ArrayList declaration, you will have removed the restriction and the syntax error will disappear. Quick! Put it back, we aren’t writing sloppy Python here!
+Once the riders have been added it uses a single line to sort it (ok here there are only four but there could be 2002).
+````
+Collections.sort( riders, new RiderComparitor());
+````
+This uses the code we saw above RiderComparitor to sort the riders ArrayList. It then loops around the riders ArrayList (we could have used a forach loop) and outputs each element, which is now in order of WattsPerKilo, with Tadej Pogacar at the top.
 
