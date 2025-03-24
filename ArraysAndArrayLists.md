@@ -126,7 +126,7 @@ The question is, how do we sort riders? On name? On Team? On wattsPerKilo? The a
 So here we could provide a method to compare two Rider objects an any of those attributes. We could do one for each attribute and we could even do one that used multiple attributes (i.e. compare one attribute and if they are the same compare another, here we might put them in alpabetical order if their watsPerKilo is the same). We can then use one of the standard collection classes to do the actual sorting. Enter ArrayList.
 
 ### ArrayLists
-ArrayList is one of the standard collection classes, there are others such as Vectors, Stacks, LinkedLists, HashTables etc. They all exploit polymorphism and the fact that all classes have a common root in an inheritance hierarchy.
+[ArrayList](https://docs.oracle.com/javase/8/docs/api/java/util/ArrayList.html) is one of the standard collection classes, there are others such as Vectors, Stacks, LinkedLists, HashTables etc. They all exploit polymorphism and the fact that all classes have a common root in an inheritance hierarchy.
 Remember that you can use the “extends” keyword (or the : in C++ and C#) to make one class inherit from another. But if you don’t extend anything then it is as if you had extended the [class Object](https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html) (I really wish they’d called it something else as we already use the term Object to mean something slightly different). In the Riders example above it is exactly as if we’d typed.
 ````
 public class Riders extends Object
