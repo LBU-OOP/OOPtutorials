@@ -11,57 +11,57 @@ Max_Capacity = 17
 ````
 Max_Capacity = 18.5
 ````
-18.5 is a real number, so Pythion would deallocate the original integer, reallocate a real number data type (double) and assign the value. This is four steps, each of which takes time.
-In Java WE decide on the datatype, so we’d have to realise that later on we want to store a real value there and allocate a double in the first place (or be forced to store the second one in a different variable).
+18.5 is a real number, so Python would deallocate the original integer, reallocate a real number data type (double) and assign the value. This is four steps, each of which takes time.
+In Java, which is statically typed, WE decide on the datatype, so we’d have to realise that later on we want to store a real value there and allocate a double in the first place (or be forced to store the second one in a different variable).
 ````
 double Max_Capacity = 17;
 then later on
 Max_Capacity = 18.5;
 ````
-It’s more efficient because it takes fewer steps, it’s clearer because nothing is happening that we don’t explicitly do ourselves and see, but the drawback is that we have the responsibility. In Software Engineering, clarity is always preferable over convenience because we might have to work with other people’s code and other people will have to work with ours.
-We have also seen that we can make more complex data, like a database record, where we can group data items together into a class. A good example is Time, we have hours, minutes and seconds to represent one particular time. This is also a good example because, unlike a database, we can also attach functionality to our classes in the form of methods. So for Time we would need functionality to ass and subtract times, because it isn’t a simple matter of just adding etc (i.e. add one second to 23:59:59).
-But so far we have only had a single data item at a time. We can crate multiple data items and process them together using loops by using arrays. Most languages call these data structures arrays but programmers of languages like Python and LISP might think of them as lists.
+It’s more efficient because it takes fewer steps, it’s clearer because nothing is happening that we don’t explicitly do ourselves and see, but the drawback is that we have the responsibility. In Software Engineering, clarity is always preferable over convenience because we might have to work with other peoples' code and other people will have to work with ours.
+We have also seen that we can make more complex data, like a database record, where we can group data items together into a class. A good example is Time, we have hours, minutes and seconds to represent one particular time. This is also a good example because, unlike a database, we can also attach functionality to our classes in the form of methods. So for Time we would need functionality to add and subtract times, because it isn’t a simple matter of just adding etc (i.e. add one second to 23:59:59).
+But so far we have only had a single data item at a time. We can crreate multiple data items and process them together using loops by using arrays. Most languages call these data structures arrays but programmers of languages like Python and LISP might think of them as lists.
 ## Simple Arrays
-An array has several advantages. Imaging someone asks you to write a program to calculate the average score of everyone in class. Without arrays, you would have to create a variable for each person you wanted to use in your average calculation. Ok, for a class, but you are going to start to complain when we then ask you to do it for your course and you are going to throw a wobbly if we ask you to do it for the university. Arrays make this task easy, and it doesn't matter how many people we have to do it for, it makes no difference. This is because:
+An array has several advantages. Imagine someone asks you to write a program to calculate the average score of everyone in class. Without arrays, you would have to create a variable for each person you wanted to use in your average calculation. Ok for a class, but you are going to start to complain when we then ask you to do it for your course and you are going to throw a wobbly if we ask you to do it for the university. Arrays make this task easy, and it doesn't matter how many people we have to do it for, it makes no difference. This is because:
 1 We can allocate as many as we need in one go.
 2 We can process however many there are with a single loop.
 In Java we should think of each type having an extra array type, denoted by square brackets, so,
 int is integer and int[] is integer array.
-double is double precision floating point (real) and double[] is doble precision floating point array.
-An array is languages like Java is an object type, so we declare it using the “new” keyword.
+double is double precision floating point (real) and double[] is double precision floating point array.
+An array in languages like Java is an object type, so we declare it using the “new” keyword.
 ````
-int[] prices = new int[5];
+int[] markss = new int[5];
 ````
-The part before the = tells us the type and name (notice that the name is a plural because there will be many), the name is a reference used to connect it to the array object. The part after creates the actual array (an object) and the part in the brackets tells us how big our array is, here ten “cells”, 0,1,2,3,4. This is static typing again, as we have to decide how big it is now. 
+The part before the = tells us the type and name (notice that the name is a plural because there will be many), the name is a reference used to connect it to the array object. The part after creates the actual array (an object) and the part in the brackets tells us how big our array is, here five cells or elements, 0,1,2,3,4. This is static typing again, as we have to decide how big it is right now. 
 The above line gives us
 ````
-prices[0]
-prices[1]
-prices[2]
-prices[3]
-prices[4]
+marks[0]
+marks[1]
+marks[2]
+marks[3]
+marks[4]
 ````
 
 Copy and paste this code into a program and run it, and see what happens.
 ````
-int[] prices = new int[5];
-prices[0] = 55;
-prices[5] = 99;
+int[] marks = new int[5];
+marks[0] = 55;
+marks[5] = 99;
 ````
 
 You will see that when you run it you will get an ArrayIndexOutOfBounds Exception.
-This is an example of an exception that should never occur (i.e. it’s not like trying to open a file that doesn’t exists that you should add code to del with). Here The allocation didn’t give me the sixth element prices[5], because I didn’t ask for it. My mistake. If I’d asked the user which element they wanted to use then I should have used an if statement to make sure it wasn’t out of bounds. Here I know the bounds as I decided, so I can programmatically do something about it. With the file not found example, there isn’t.
+This is an example of an exception that should never occur (i.e. it’s not like trying to open a file that doesn’t exists that you should add code to deal with). Here The allocation didn’t give me the sixth element marks[5], because I didn’t ask for it. My mistake. If I’d asked the user which element they wanted to use then I should have used an if statement to make sure it wasn’t out of bounds. Here I know the bounds as I decided, so I can programmatically do something about it. With the file not found example, I can't.
 
 Try changing the value in the index to negative values and you’ll see you get the same thing.
 
-To create and Array of Doubles I would:
+To create and Array of doubles I would:
 ````
-double[] distances = new Double[100];
+double[] distances = new double[100];
 ````
 This would give 100 “elements” distances[0] to distances[99]
 
 So far so good.
-Some operations can return arrays as a result. The String class has a method that allows us to split a string on a character, so for example, we could split a sentence on a space and get all the words back individually. In this case we don’t know at development time what length the sentence is (if we are asking the user t0 type one in). Instead, the split method of string will get to find that out at run time and it makes the appropriately sized array, so all we have to do is tell it the array reference we want it to use:
+Some operations can return arrays as a result. The String class has a method that allows us to split a string on a character, so for example, we could split a sentence on a space and get all the words back individually. In this case we don’t know at development time what length the sentence is (if we are asking the user to type one in). Instead, the split method of string will get to find that out at run time and it makes the appropriately sized array, so all we have to do is tell it the array reference we want it to use:
 ````
         Scanner myScan = new Scanner(System.in);
         System.out.println("type in a sentance");
@@ -73,18 +73,24 @@ Some operations can return arrays as a result. The String class has a method tha
             System.out.println("word "+i+" is "+words[i]);
         }
 ````
-We are doing several things here. Using Scanner should not be unfamiliar by now, but we don't know how many words are in the sentence until RUNTIME, as it depends upon what the user types in and we don’t know that as we are writing the program. Once they have typed something in and the line to split the text is executed (and remember that the split method is part of the string class) then by then it DOES KNOW and can allocate the correctly size array. We can find out what this is because all arrays have a length property. Here it is:
+We are doing several things here. Using Scanner should not be unfamiliar by now, but we don't know how many words are in the sentence until RUNTIME, as it depends upon what the user types in and we don’t know that as we are writing the program. Once they have typed something in and the line to split the text is executed (and remember that the split method is part of the string class) and by then it DOES KNOW and can allocate the correctly size array. We can find out what this is because all arrays have a length property. Here it is:
 ````
 words.length
 ````
 We use this in a for loop to iterate one by one over each element, starting at the first and finishing at the last. The brilliant thing is that we can index the array using a variable and here I am using the loop control variable (I’ve called it “i” out of convention, it stands for iterate, but I could have called it anything).
+### ForEach loop
+It is a very common thing to iterate over an array, starting at the beginning, going one at a time and finishing at the end. Above I have done that by setting the loop control variable (i) to start at the first element (0), I then set it to go up by one each time around the loop (i++ is short hand for i=i+1), and make it stop when the condition fails, i.e. it reaches the last element and i < words.length becomes false. I like that as a lecturer, because I’ve been able to explain it step by step. But, I might make a mistake (commonly putting <= instead of < and then I’d get an OutOfBounds Exception (try it)). Because it is so common to do this the For Each loop is provided to do it for us.
+
+Replace the loop in the example program with:
+
 ````
   for (String word : words )
   {
       System.out.println("word is "+word);
   }
 ````
-
+Here the ForEach loop (yes it is still only spelt “for”) takes a variable declaration to receive an item from the array each time around the loop (String word). We then tell it the array we are iterating over (words). So each time around the loop, “word” gets the next element in the array. Try it.
+.
 ## Arrays Of Objects
 [The full example code is here.](https://github.com/LBU-OOP/OOPexampleCode/blob/main/ArrayListExample.java)
 So far we have looked at simple arrays of cardinal datatypes (ok for those paying attention String isn’t actually a cardinal datatype but it is shortcutter to behave like one). We can also have arrays of Objects. So we could create a class Time and have an array of Times.
