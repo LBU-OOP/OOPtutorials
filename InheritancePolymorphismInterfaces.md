@@ -339,4 +339,4 @@ public class Rectangle extends Shape
 Here Rectangle extends Shape and it can implement the abstract methods and actually do the drawing. 
 
 
-The main class creates an ArrayList and populates it with some shapes to draw a face. It iterates over the ArrayList and calls the draw() method of each Shape (whatever it is).
+The main class creates an [ArrayList](https://github.com/LBU-OOP/OOPtutorials/blob/main/ArraysAndArrayLists.md) and populates it with some shapes to draw a face. It iterates over the ArrayList and calls the draw() method of each Shape (whatever it is).
