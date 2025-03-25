@@ -203,7 +203,7 @@ public class Car
 
 Using `this` improves code clarity and prevents ambiguity.  
 
----
+
 
 ### **Visibility Modifiers (Public and Private)**  
 Java provides **visibility modifiers** to control access to classes, methods, and variables. The two most commonly used are:  
@@ -252,3 +252,95 @@ class Person
 ```  
 
 By using setters and getters, developers can enforce validation and maintain encapsulation while still allowing controlled access to private data.
+
+
+### **Variable Scope in Java**  
+
+**Variable scope** in Java determines where a variable can be accessed within a program. There are three main types of variable scope:  
+
+1. **Local Scope:** Variables declared inside a method or block `{}` are local variables. They exist only within that method and cannot be accessed outside it.  
+   ```java
+   public void printMessage()
+   {
+       String message = "Hello!"; // Local variable
+       System.out.println(message);
+   }
+   // 'message' is not accessible outside the method
+   ```  
+
+2. **Instance Scope:** Instance variables are declared inside a class but outside methods. They belong to an instance of the class and are accessible by all methods in that class.  
+   ```java
+   class Person
+   {
+       String name; // Instance variable
+   }
+   ```  
+
+3. **Class (Static) Scope:** Static variables belong to the class itself rather than individual objects. They are shared across all instances of the class.  
+   ```java
+   class Counter
+   {
+       static int count = 0; // Class-level variable
+   }
+   ```  
+
+Understanding scope ensures proper variable access and memory management, preventing unintended modifications and reducing errors.  
+
+
+
+### **Constructors in Java**  
+
+A **constructor** is a special method used to initialize objects when they are created. It has the same name as the class and does not have a return type. Constructors are automatically called when an object is instantiated.  
+
+#### **Default Constructor**  
+If no constructor is provided, Java supplies a default constructor:  
+```java
+class Person
+{
+    String name;
+    
+    // Default constructor
+    public Person()
+    {
+        name = "Unknown";
+    }
+}
+```  
+
+#### **Parameterized Constructor**  
+A constructor can accept parameters to initialize object properties:  
+```java
+class Person
+{
+    String name;
+    
+    // Parameterized constructor
+    public Person(String name)
+    {
+        this.name = name;
+    }
+}
+```  
+
+#### **Constructor Overloading**  
+Java supports multiple constructors with different parameter lists:  
+```java
+class Car
+{
+    String model;
+    int year;
+    
+    public Car(String model)
+    { // Overloaded constructor
+        this(model, 2024);
+    }
+    
+    public Car(String model, int year)
+    {
+        this.model = model;
+        this.year = year;
+    }
+}
+```  
+
+Constructors ensure objects are properly initialized, improving code readability and reducing the risk of uninitialized variables.
