@@ -24,7 +24,7 @@ public class Main
 {
     public static void main(String[] args)
     {
-        myBike = new Car();  // Creating an object
+        myBike = new Bicycle();  // Creating an object
         myBike.model = "SWorks SL7";
         myBike.weight = 8;
         myBike.displayInfo();  // outputs Model : Sworks SL7 Weight 8kg
