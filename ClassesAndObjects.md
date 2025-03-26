@@ -158,7 +158,7 @@ By minimizing logic inside `main()` and avoiding excessive use of static methods
 ## Pre-Existing and Standard Classes
 ### **The `Scanner` Class – A Pre-Existing Java Class**  
 
-Java provides many built-in classes, such as `Scanner`, which allows user input. The `Scanner` class is part of `java.util` and is used to read input from the console, files, or other sources.  
+Java provides many built-in classes, called the Standard Classes, such as `[Scanner](https://docs.oracle.com/javase/8/docs/api/java/util/Scanner.html)`, which allows user input. The `Scanner` class is part of `java.util` and is used to read input from the console, files, or other sources. [The Documentation for the standard classes is here.](https://docs.oracle.com/javase/8/docs/api/)
 
 Example:  
 
@@ -179,10 +179,38 @@ public class UserInputExample
 ```  
 
 Here, `Scanner` is an example of a pre-existing Java class that simplifies input handling. It has methods like `nextInt()`, `nextDouble()`, and `nextLine()` to read different data types.  
+### The String Class
+String may seem like a primitive data type but it is actually a Class because it has lots of useful functionality associated with it, such as comparing strings alphabetically, splitting a string up, changing its case etc.
+[See the documentation for String].(https://docs.oracle.com/javase/8/docs/api/java/lang/String.html)
 
+### The Locale Class
+Other Classes provide useful functionality that is required in so many applications it is incorporated into the standard Java Classes. 
+The Locale Class provides functionality to deal with different locations in the world displaying numbers and currencies in different ways.
+Locale locale = new Locale("en", "GB"); //make our locale Great Britain
+
+```Java
+NumberFormat numberFormat = NumberFormat.getInstance(locale);
+NumberFormat currencyFormat = NumberFormat.getCurrencyInstance(locale);
+String currency = currencyFormat.format(totalPrice);
+System.out.println("Price is "+ currency); //display with pound sign
+````
+### The Integer Class
+The [Integer class](https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html) is a “Wrapper Class”, this means that it is a collection of utility methods associated with integers because the int type is not a class. It is special because methods inside it are “static”, which means they can be called without making an object of it.
+```Java
+        Scanner scanner = new Scanner(System.in);  // Creating a Scanner object
+        System.out.print("Enter a value ");
+        String numberString = scanner.nextLine();  // Reading user input as a String
+        int value = Integer.parseInt(numberString); //convert it to a number
+```
+
+### The Random Class
+The [Random class](https://docs.oracle.com/javase/8/docs/api/java/util/Random.html), produces pseudo random numbers (pseudo because it is really hard to create a genuinely random number). We'd find this useful in a Dice Class, below.
+
+## Designing Your Own Classes
+We can also create our own classes. They are included as java files in our project. Generally, there are two types of classes. One is data-driven, the Time class is an example of this. It is a bit like a database record in that it is collecting several data items together into a single unit, here hours, minutes and seconds into a single Time. It then goes further than a database because it provided functionality to manipulate the data. The second type is a behaviour-driven class, the Dice is an example of this. It isn't representing data as such, but something that has a behaviour.
 
 ### **Example: A `Time` Class**  
-We can also create our own classes. They are included as java files in our project.
+
 A `Time` class can represent hours, minutes, and seconds while providing methods to manipulate time values. To use it it must be in a file called Time.java inside our project.
 
 ```java
@@ -283,5 +311,6 @@ public class Main
     }
 }
 ```  
+Notice that this class doesn't even define any instance data. All it does is provide a roll() method. When this calls it produces a new value and returns it. As it stands this class does not allow you to look at it again. To do that you would have to add an attribute to represent its value and and way of reading it (but ytou wuldn't provide a setter because that would be like picking up a dice and putting it down as a set face and you just don't do that with a dice). 
 
 The `Dice` class uses the `Random` class from `java.util` to generate a random dice roll, demonstrating how we can combine built-in Java classes with our own custom classes. We don't need to set it or get it, we just need the behaviour method roll() which does both setting and getting.
