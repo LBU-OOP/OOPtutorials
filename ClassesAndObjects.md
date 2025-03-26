@@ -242,7 +242,7 @@ public class Main
     }
 }
 ```  
-
+#### Visibility modifiers, public and private
 This `Time` class uses **encapsulation** by making fields `private` and provides a constructor for initialization. 
 As it stands this means that once a Time is created we couldn't change the value of the time. The technical term is it is "immutable" (can't change).
 Strings are immutable, but you can change them by creating another one and attaching the reference to it. All of the methods inside string that appear to change the string actually just return a new string.
