@@ -30,7 +30,7 @@ int is integer and int[] is integer array.
 double is double precision floating point (real) and double[] is double precision floating point array.
 An array in languages like Java is an object type, so we declare it using the “new” keyword.
 ```Java
-int[] markss = new int[5];
+int[] marks = new int[5];
 ```
 The part before the = tells us the type and name (notice that the name is a plural because there will be many), the name is a reference used to connect it to the array object. The part after creates the actual array (an object) and the part in the brackets tells us how big our array is, here five cells or elements, 0,1,2,3,4. This is static typing again, as we have to decide how big it is right now. 
 The above line gives us
@@ -79,7 +79,14 @@ words.length
 ````
 We use this in a for loop to iterate one by one over each element, starting at the first and finishing at the last. The brilliant thing is that we can index the array using a variable and here I am using the loop control variable (I’ve called it “i” out of convention, it stands for iterate, but I could have called it anything).
 ### ForEach loop
-It is a very common thing to iterate over an array, starting at the beginning, going one at a time and finishing at the end. Above I have done that by setting the loop control variable (i) to start at the first element (0), I then set it to go up by one each time around the loop (i++ is short hand for i=i+1), and make it stop when the condition fails, i.e. it reaches the last element and i < words.length becomes false. I like that as a lecturer, because I’ve been able to explain it step by step. But, I might make a mistake (commonly putting <= instead of < and then I’d get an OutOfBounds Exception (try it)). Because it is so common to do this the For Each loop is provided to do it for us.
+It is a very common thing to iterate over an array, starting at the beginning, 
+going one at a time and finishing at the end. 
+Above I have done that by setting the loop control variable (i) to start at the first 
+element (0), I then set it to go up by one each time around the loop 
+(i++ is short hand for i=i+1), and make it stop when the condition fails, 
+i.e. it reaches the last element and i < words.length becomes false. 
+I like that as a lecturer, because I’ve been able to explain it step by step. 
+But, I might make a mistake (commonly putting <= instead of < and then I’d get an ArrayIndexOutOfBounds Exception (try it)). Because it is so common to do this the For Each loop is provided to do it for us.
 
 Replace the loop in the example program with:
 
@@ -93,7 +100,7 @@ Here the ForEach loop (yes it is still only spelt “for”) takes a variable de
 .
 ## Arrays Of Objects
 [The full example code is here.](https://github.com/LBU-OOP/OOPexampleCode/blob/main/ArrayListExample.java)
-So far we have looked at simple arrays of cardinal datatypes (ok for those paying attention String isn’t actually a cardinal datatype but it is shortcutter to behave like one). We can also have arrays of Objects. So we could create a class Time and have an array of Times.
+So far we have looked at simple arrays of cardinal datatypes (ok for those paying attention String isn’t actually a cardinal datatype but it is shortcut to behave like one). We can also have arrays of Objects. So we could create a class Time and have an array of Times.
 
 Assuming a definition for Time.Java in our project.
 ```Java
@@ -177,7 +184,7 @@ public ArrayListExample()
 		}
 		
 	}
-```	
+```
 
 An ArrayList is created that restricts entries to objects of Rider and classes that may extend Rider. 
 After the ArrayList line add the line.
@@ -185,7 +192,7 @@ After the ArrayList line add the line.
 Object o = new Object();
 riders.add(o);
 ```
-You will get a syntax error on the second line because you are trying to add something above Rider in the hierarchy (an object of the class Object). In this case we want this to happen because this is an ArrayList with associated code to deal with Riders, we don’t want Strings and Times ever being in there (the key Software Engineering principle is that this code could be reused in the future and we don’t want our main code crashing in the future because it can’t compare wattsPerKilo of a Time!). If you remove the \<Rider\> from the ArrayList declaration, you will have removed the restriction and the syntax error will disappear. Quick! Put it back, we aren’t writing sloppy Python here!
+You will get a syntax error on the second line because you are trying to add something above Rider in the hierarchy (an object of the class Object). In this case we want this to happen because this is an ArrayList with associated code to deal with Riders, we don’t want Strings and Times ever being in there (the key Software Engineering principle is that this code could be reused in the future and we don’t want our main code crashing in the future because it can’t compare wattsPerKilo of a Time!). If you remove the `<Rider>` from the ArrayList declaration, you will have removed the restriction and the syntax error will disappear. Quick! Put it back, we aren’t writing sloppy Python here!
 Once the riders have been added it uses a single line to sort it (ok here there are only four but there could be 2002).
 ```Java
 Collections.sort( riders, new RiderComparitor());
