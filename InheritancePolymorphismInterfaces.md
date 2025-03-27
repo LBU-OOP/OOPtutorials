@@ -1,6 +1,6 @@
 # Inheritance, Polymorphism and Interfaces
 
-Object-Oriented Programming (OOP) is a fundamental paradigm in Java that organizes software design around objects, encapsulating data and behaviour. Key concepts in OOP include **inheritance**, **polymorphism**, and **interfaces**. This tutorial introduces these concepts to novice programmers using two GitHub projects: [InheritanceExample](https://github.com/LBU-OOP/InheritanceExample) and [OOPShapesInheritanceExample](https://github.com/LBU-OOP/OOPShapesInhertianceExample).
+Object-Oriented Programming (OOP) is a fundamental paradigm in Java that organizes software design around objects, encapsulating data and behaviour. Key concepts in OOP include **inheritance**, **polymorphism**, and **interfaces**. This tutorial introduces these concepts to novice programmers using two GitHub projects: [InheritanceExample](https://github.com/LBU-OOP/InheritanceExample) and [OOPShapesInheritanceExample](https://github.com/LBU-OOP/OOPShapesInhertianceExample).
 
 ## Inheritance
 Inheritance is a major tool is the arsenal of a Software Engineer. It allows us to take code that pre-exists and without having to understand or even look at the actual code, use it, add functionality to it and change the existing functionality of it. All we need to know is what it does and how to make it do it. Interfaces allow the original designer to specify rules that anyone inheriting the classes has to comply with. This is in line with the OO concept of Encapsulation.
@@ -15,8 +15,6 @@ The `InheritanceExample` project demonstrates inheritance through a simple shape
 
 
 ```java
-package uk.ac.leedsbeckett.mullier.simpler;
-
 public class Shape
 {
     protected int x, y;
@@ -41,8 +39,6 @@ The `Shape` class defines common properties `x` and `y` for positioning and a `d
 
 
 ```java
-package uk.ac.leedsbeckett.mullier.simpler;
-
 public class Rectangle extends Shape
 {
     private int width, height;
@@ -70,8 +66,6 @@ The `Rectangle` class extends `Shape`, inheriting its properties and overriding 
 
 
 ```java
-package uk.ac.leedsbeckett.mullier.simpler;
-
 public class Square extends Rectangle
 {
     public Square(int x, int y, int side)
@@ -95,8 +89,6 @@ The `Square` class extends `Rectangle`, using inheritance to set both width and 
 
 
 ```java
-package uk.ac.leedsbeckett.mullier.simpler;
-
 public class Main
 {
     public static void main(String[] args)
@@ -134,8 +126,6 @@ Polymorphism allows objects to be treated as instances of their parent class, en
 
 
 ```java
-package uk.ac.leedsbeckett.mullier.simpler;
-
 public class Main
 {
     public static void main(String[] args)
@@ -173,14 +163,12 @@ An interface in Java is a reference type that defines a set of abstract methods 
 An example of an interface in everyday life is the interface to a manual car. It has steering, brake and accelerate. A car implements this interface and we know how to drive it, regardless whether it's carburettor, fuel injection or electric driven.
 ### Example from OOPShapesInheritanceExample
 
-The `OOPShapesInheritanceExample` project demonstrates the use of interfaces alongside inheritance.
+The `OOPShapesInheritanceExample` project demonstrates the use of interfaces alongside inheritance.
 
 **Shapes.java**
 
 
 ```java
-package uk.ac.leedsbeckett.mullier.oop;
-
 import java.awt.Color;
 import java.awt.Graphics;
 /**
@@ -226,8 +214,6 @@ The `Shapes` interface defines a contract for drawing shapes, specifying that an
 
 
 ```java
-package uk.ac.leedsbeckett.mullier.oop;
-
 import java.awt.Color;
 import java.awt.Graphics;
 
@@ -241,7 +227,7 @@ public abstract class Shape implements Shapes
         colour = Color.RED;
         x = y = 100;
     }
-	public Shape(Color colour, int x, int y)
+    public Shape(Color colour, int x, int y)
     {
 
         this.colour = colour; //shape's colour
@@ -250,29 +236,28 @@ public abstract class Shape implements Shapes
         //can't provide anything else as "shape" is too general
     }
 	
-	public void set(Color c, int... list) 
-	{
-		 this.colour = c;
+    public void set(Color c, int... list) 
+    {
+	 this.colour = c;
          this.x = list[0];
          this.y = list[1];
-	}
+    }
 
-	public String ToString()
+    public String ToString()
     {
         return super.toString()+"    "+this.x+","+this.y+" : "; //note c# base instead of super and ToString()
     }
-	public abstract void draw(Graphics g); 
+    public abstract void draw(Graphics g); 
 	
 
-	@Override
-	public abstract double calcArea(); 
+    @Override
+    public abstract double calcArea(); 
 
-	@Override
-	public abstract double calcPerimeter(); 
+    @Override
+    public abstract double calcPerimeter(); 
 
 }
 ```
-
 
 The `Shape` class implements the `Shapes` interface, committing to providing a `draw` method, which its subclasses must implement.
 But Shape can't actually implement them here as it is, as stated above, too abstract. So it passes on the responsibility. It does this by declaring "abstract methods" for each method it can't implement. This passes the responsibility on to any inheriting classes, they must either implement them or pass the responsibility on. Any class that has abstract methods in it must itself be declared abstract. This makes it absolutely clear to an software engineer that an object of this class cannot be instantiated because it is abstract and therefore not complete (it is being used as a building block).
@@ -282,8 +267,6 @@ But Shape can't actually implement them here as it is, as stated above, too abst
 
 
 ```java
-package uk.ac.leedsbeckett.mullier.oop;
-
 import java.awt.Color;
 import java.awt.Graphics;
 
@@ -320,20 +303,20 @@ public class Rectangle extends Shape
          g.drawRect(x, y, width, height);
      }
 
-	 public double calcArea()
-	 {
-	   	 return width * height;
-	 }
+   public double calcArea()
+   {
+   	 return width * height;
+   }
 
-	 public double calcPerimeter()
-	 {
-	   	 return 2 * width + 2 * height;
-	 }
+   public double calcPerimeter()
+   {
+   	 return 2 * width + 2 * height;
+   }
 
-	 public String ToString() //all classes inherit from object and ToString() is abstract in object
-	 {
-	     return super.ToString()+ "rectangle  "+this.width+","+this.width;
-	 }
+   public String ToString() //all classes inherit from object and ToString() is abstract in object
+   {
+        return super.ToString()+ "rectangle  "+this.width+","+this.width;
+   }
 }
 ```
 Here Rectangle extends Shape and it can implement the abstract methods and actually do the drawing. 
