@@ -7,13 +7,16 @@ public int add(int a, int b)
     return a + b;
 }
 ```  
-
+The first line is the method's signatue, how it will be identified when it is called.
 In this example:  
 - `public` is the **visibility modifier**, determining who can access the method.  
 - `int` is the **return type**, specifying that the method returns an integer.  
 - `add` is the **method name**.  
-- `(int a, int b)` are the **parameters**, defining inputs the method expects.  
-- `{ return a + b; }` is the **method body**, containing the actual logic.  
+- `(int a, int b)` are the **parameters**, defining inputs the method expects.
+  
+  After the signature comes the metho's body, where the actual operation is defined.
+  
+ `{ return a + b; }` is the **method body**, containing the actual logic.  
 
 Java methods must be declared inside a class and cannot exist independently.  
 
@@ -203,7 +206,7 @@ public class Car
 
 Using `this` improves code clarity and prevents ambiguity.  
 
-
+The `this` object is particularly useful when using a debugger. Execution is always inside one and only one object (or class if static) at any given instant of time. So when you see the stripe showing where execution is it is inside `this` object and the debugger will show you what `this` object is. Anything declared as `private` (see below) is not accessible unless it is in `this` object (i.e. where execution currently is).
 
 ### **Visibility Modifiers (Public and Private)**  
 Java provides **visibility modifiers** to control access to classes, methods, and variables. The two most commonly used are:  
