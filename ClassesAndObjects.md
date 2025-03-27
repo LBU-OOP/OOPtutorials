@@ -176,7 +176,7 @@ By minimizing logic inside `main()` and avoiding excessive use of static methods
 ## Pre-Existing and Standard Classes
 ### **The `Scanner` Class – A Pre-Existing Java Class**  
 
-Java provides many built-in classes, called the Standard Classes, such as `[Scanner](https://docs.oracle.com/javase/8/docs/api/java/util/Scanner.html)`, which allows user input. The `Scanner` class is part of `java.util` and is used to read input from the console, files, or other sources. [The Documentation for the standard classes is here.](https://docs.oracle.com/javase/8/docs/api/)
+Java provides many built-in classes, called the Standard Classes, such as [Scanner](https://docs.oracle.com/javase/8/docs/api/java/util/Scanner.html), which allows user input. The `Scanner` class is part of `java.util` and is used to read input from the console, files, or other sources. [The Documentation for the standard classes is here.](https://docs.oracle.com/javase/8/docs/api/)
 
 Example:  
 
@@ -199,11 +199,11 @@ public class UserInputExample
 Here, `Scanner` is an example of a pre-existing Java class that simplifies input handling. It has methods like `nextInt()`, `nextDouble()`, and `nextLine()` to read different data types.  
 ### The String Class
 String may seem like a primitive data type but it is actually a Class because it has lots of useful functionality associated with it, such as comparing strings alphabetically, splitting a string up, changing its case etc.
-[See the documentation for String].(https://docs.oracle.com/javase/8/docs/api/java/lang/String.html)
+[See the documentation for String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html).
 
 ### The Locale Class
 Other Classes provide useful functionality that is required in so many applications it is incorporated into the standard Java Classes. 
-The Locale Class provides functionality to deal with different locations in the world displaying numbers and currencies in different ways.
+[The Locale Class](https://docs.oracle.com/javase/8/docs/api/java/util/Locale.html) provides functionality to deal with different locations in the world displaying numbers and currencies in different ways.
 Locale locale = new Locale("en", "GB"); //make our locale Great Britain
 
 ```Java
