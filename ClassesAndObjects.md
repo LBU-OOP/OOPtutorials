@@ -1,5 +1,5 @@
 ### **Classes and Objects in Java**  
-The idea behind Object Orientation is to use physical analogies to make one large software system into lots of smaller sub-systems. This makes them easier to understand, because they are only of limited functionality on their own, it allows their inner workings to be encapsulated, i.e. no one else necessarily needs to under stand how it does it, just what it does (the service it offers) and how to make it do it.
+The idea behind Object Orientation is to use physical analogies to break one large software system into lots of smaller sub-systems. This makes them easier to understand, because they are only of limited functionality on their own, it allows their inner workings to be encapsulated, i.e. no one else necessarily needs to know how it does it, just what it does (the service it offers) and how to make it do it.
 In Java, a **class** is a blueprint for creating objects. It defines the structure (fields) and behavior (methods) of an object. An **object** is an instance of a class, representing a real-world entity with state and behaviour.  
 
 For example, consider a `Bicycle` class:  
