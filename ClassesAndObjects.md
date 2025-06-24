@@ -1,5 +1,7 @@
 ### **Classes and Objects in Java**  
-The idea behind Object Orientation is to use physical analogies to break one large software system into lots of smaller sub-systems. This makes them easier to understand, because they are only of limited functionality on their own, it allows their inner workings to be encapsulated, i.e. no one else necessarily needs to know how it does it, just what it does (the service it offers) and how to make it do it.
+The idea behind Object Orientation is to use physical analogies to break one large software system into lots of smaller sub-systems. 
+This makes them easier to understand, because they are only of limited functionality on their own and it allows their inner workings to be encapsulated,
+i.e. no one else necessarily needs to know how it does it, just what it does (the service it offers) and how to make it do it.
 In Java, a **class** is a blueprint for creating objects. It defines the structure (fields) and behavior (methods) of an object. An **object** is an instance of a class, representing a real-world entity with state and behaviour.  
 
 For example, consider a `Bicycle` class:  
@@ -43,7 +45,7 @@ Can also be expressed as
  Bicycle myBike;    //create a reference which so far is attached to null (nothing)
  myBike = new Bicycle();  // Creating an object
 ```
-This is just seperating out the two things that are happening, 1) a reference is being created, 2) an object is created and attached to the reference.
+This is just separating out the two things that are happening, 1) a reference is being created, 2) an object is created and attached to the reference.
 Once an object is created then we can call upon its methods\services using the dot (.) notation. Here it only has one service displayeInfo().
 ```Java
      myBike.displayInfo();
@@ -150,7 +152,7 @@ public class Application
     }
 }
 ```  
-This is why you should get ut of the static context as soon as possible. You can do this by creating an object and calling a method inside it. Which is what is happening above.
+This is why you should get out of the static context as soon as possible. You can do this by creating an object and calling a method inside it. Which is what is happening above.
 The start() method is called straight after the object of Application is created and is not static, so when execution gets there we are in the clear and not in a static context.
 However, it is clearer to just use a constructor, which is explained later, but is a method with the same name as the class but no return type (it can't return anything because it is already returning the object's reference). It is called after the "new" keyword.
 It would look lke this.
@@ -171,7 +173,7 @@ public class Application
 }
 ```  
 It's just that bit simpler.
-By minimizing logic inside `main()` and avoiding excessive use of static methods, we maintain a more flexible and object-oriented design.
+By minimizing the logic inside `main()` and avoiding excessive use of static methods, we maintain a more flexible and object-oriented design.
 
 ## Pre-Existing and Standard Classes
 ### **The `Scanner` Class – A Pre-Existing Java Class**  
@@ -281,10 +283,10 @@ Inside the class and by convention after the constructor, you would put the foll
       return hour;
   }
 ```
-Because hour is private no one can create an object of Time and set it's hour directly. They have to go through the setHour() method and it checks it's a sensible value. Because it's private no one can read it either, so we provide a corresponding getter method.
+Because hour is private no one can create an object of Time and set its hour directly. They have to go through the setHour() method that checks it's a sensible value. Because it's private no one can read it either, so we provide a corresponding getter method.
 Most IDEs will produce skeleton methods for you at the click of the mouse, leaving you to fill in the logic.
 
-To make our code more robust we would alter the constructor to (assuming I'd completed the setters for minute and second as well:
+To make our code more robust we would alter the constructor to (assuming I'd completed the setters for minute and second as well):
 
 ```Java
   public Time(int hour, int minute, int second)
@@ -296,7 +298,7 @@ To make our code more robust we would alter the constructor to (assuming I'd com
 ```
 What I could have done is put the same if statement in the constructor, but I've already written it and I don't want to repeat code, this way if there's a bug in it, there is only one and not two!
 
-In reality we'd make our Time class more useful by adding functionality to add and subtract hours, minutes and seconds. Think about it, it is not so simple.
+In reality, we'd make our Time class more useful by adding functionality to add and subtract hours, minutes and seconds. Think about it, it is not so simple.
 
 ### **Example: A `Dice` Class**  
 The Time class is rather like a data class, this example is a behaviour type class.
@@ -329,6 +331,6 @@ public class Main
     }
 }
 ```  
-Notice that this class doesn't even define any instance data. All it does is provide a roll() method. When this calls it produces a new value and returns it. As it stands this class does not allow you to look at it again. To do that you would have to add an attribute to represent its value and and way of reading it (but ytou wuldn't provide a setter because that would be like picking up a dice and putting it down as a set face and you just don't do that with a dice). 
+Notice that this class doesn't even define any instance data. All it does is provide a roll() method. When this calls it produces a new value and returns it. As it stands this class does not allow you to look at it again. To do that you would have to add an attribute to represent its value and a way of reading it (but you wouldn't provide a setter because that would be like picking up a dice and putting it down as a set face and you just don't do that with a dice). 
 
 The `Dice` class uses the `Random` class from `java.util` to generate a random dice roll, demonstrating how we can combine built-in Java classes with our own custom classes. We don't need to set it or get it, we just need the behaviour method roll() which does both setting and getting.

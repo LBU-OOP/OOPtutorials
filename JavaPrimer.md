@@ -6,18 +6,23 @@ they differ significantly
 in their design philosophy,
 syntax, and application. 
 
-Python is not a baginner's 
+Python is not a beginner's 
 language but rather a 
 language that allows a 
 skilled person to quickly 
 write code. It errs on the 
 side of flexibility in 
 code production at the 
-expense of clarity. 
-It is interpreted and 
-dynamically typed
-Java on the 
-other-hand is intended for 
+expense of clarity. Note that some people see this as an advantage of Python over Java.
+They will say something disparaging like "Java is too verbose".
+But Java is being as clear as possible, as it is a Software Engineering and hence potentially lots of people 
+over a long timescale will be exposed to the source code, so it must be as clear and understandable as possible.
+It also reads very similarly to other software engineering languages like Swift, C++ and C#.
+Python is 
+dynamically typed and interpreted, 
+Java (and the aforementioned languages), on the 
+other-hand is staticly-typed and compiled.  
+Java is intended for 
 Software 
 Engineering, which means 
 potentially large project, 
@@ -53,7 +58,7 @@ In contrast, Java requires explicit type declarations because it uses static typ
 int x = 10; // Explicit type declaration
 x = "Hello"; // This would cause a compilation error
 ```
-This strict type enforcement in Java helps catch errors at compile time, whereas Python’s flexibility can sometimes lead to runtime errors.
+This strict type enforcement in Java helps catch errors at compile time (software engineer only sees them), whereas Python’s flexibility can sometimes lead to runtime errors (potentially they filter down to the users).
 
 ### Difference in If Statements
 Python and Java use 
