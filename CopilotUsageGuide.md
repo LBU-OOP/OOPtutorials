@@ -97,7 +97,7 @@ explaining add(), remove(), and get() methods?
 
 - **Consistency**: Check existing tutorials for formatting and style before adding new content
 - **Target Audience**: Remember these are for students learning Java OOP concepts
-- **Code Examples**: Include both Python and Java examples where comparisons are helpful
+- **Code Examples**: Focus on Java examples; include Python comparisons only when helpful for context
 - **Clarity**: Aim for clear, concise explanations
 
 #### Example Prompts for This Repository:
@@ -140,7 +140,7 @@ git diff
 git log --oneline -10
 
 # Undo changes to a file (if needed)
-git checkout -- filename.md
+git restore filename.md
 
 # Create a new branch for your work
 git checkout -b your-branch-name
