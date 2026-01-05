@@ -143,7 +143,7 @@ git log --oneline -10
 git restore filename.md
 
 # Create a new branch for your work
-git checkout -b your-branch-name
+git switch -c your-branch-name
 
 # Save your work
 git add .
@@ -170,4 +170,6 @@ When your Copilot chat disappears:
 4. ✅ Use git commands to understand your current state
 5. ✅ Be specific in your requests
 
-Remember: Copilot is a tool to assist you, but you're in control. Always review its suggestions and ensure they align with the repository's goals and style!
+Remember: Copilot is a tool to assist you, but you're in control. 
+Always review its suggestions and ensure they align with the 
+repository's goals and style!
