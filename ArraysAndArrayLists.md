@@ -140,7 +140,10 @@ public class Riders extends Object
 ````
 The upshot is that every Java class (same for C#/C++) ever made or ever will be made IS AN Object (the class Object). This means that we can have an array of Object and put any an object (small o) of any class at all in it. This is because a reference to Object can be attached to an object of any class. This means that languages like Java can provide standard collection classes because they are just collections of Object.
 
-For our example I am going to compare on wattsPerKilo.
+For our example I am going to compare on wattsPerKilo. I am going to use the Comparitor Interface. The idea of interfaces is like all common interfaces. When you learn to drive a car, you are learning to use a common interface. You might learn in a Toyota Corolla (like I did), but once you've learned the interface you can apply it to any car. If you let me, I could drive your Tesla, even though the underlying mechanism is totally different. So I can learn how to sort my Rider Objects using the Comparitor interface, but once I've done it I can apply that skill to sorting anything else and I'll recognise when other engineers have sorted their objects using the same interface. The same applies for all propgramming interfaces. Everyone learns the same technique, once. It gets applied many, many, many times.
+
+A quick note on the <type> notation. Although an ArrayList allows us to put anything in it, because everything is, in the end, derived from Object, we don't always want to. We might still limit what goes in, in the same way we might want a sock draw and an under pants draw. In programming it is more vital, because we might be looping round an ArrayList and calling the object's paint method, because it is a shape. If it isn't a shape and doesn't have a paint method we are going to get a run-time error. So in this case we would limit our ArrayList to <Shape>, and then only Shape or things that extend it could be put in. Below I am limiting it to <Rider>.
+
 ```Java
 class RiderComparitor implements Comparator <Rider>
 	{
@@ -156,9 +159,9 @@ class RiderComparitor implements Comparator <Rider>
 		
 	}
 ```
-Here I am implementing the Comparator interface. This ensures that I have the method that ArrayList is going to call to do the sorting. The <> notation allows us to restrict what we are operating on. ArrayList can work on anything because everything drives from Object, but we might not want to be so flexible, as being overly flexible can lead to unknown problems, always err on the side of clarity. So here we restrict it to classes of Rider and classes that extend from that by putting <Rider>.
+Here I am implementing the Comparator interface. This ensures that I have the method that ArrayList is going to call to do the sorting. The <> notation allows us to restrict what we are operating on. ArrayList can work on anything because everything derives from Object, but we might not want to be so flexible, as being overly flexible can lead to unknown problems, always err on the side of clarity. So here we restrict it to classes of Rider and classes that extend from that by putting <Rider>.
 
-The code then says what to do with two Riders objects, which one wins, as it were? If the first of the two riders has the better wattsPerKilo then they win (1), if they have worse then they lose (-1), or if it’s the same it’s a draw (0). The ArrayList Sort method just repeatedly calls this method to see how it should compare two objects and it then sorts them. The key point is that it is up to you, the designer of the Rider class, how two riders objects are compared.
+The code then says what to do with two Riders objects, which one wins, as it were? If the first of the two riders has the better wattsPerKilo then they win (1), if they have worse then they lose (-1), or if it’s the same it’s a draw (0). The overridden compare method from the Object class, specifies that all overridden methods (whether written by you, me or anyone should do this). The ArrayList Sort method just repeatedly calls this method to see how it should compare two objects and it then sorts them. The key point is that it is up to you, the designer of the Rider class, how two riders objects are compared.
 
 _Side Note. Look up Bubble Sort, this is the algorithm that ArrayList uses, you don't have to know how it works but as computer scientists you are probably interested. A bubble sort goes through an array comparing two elements at a time, if they are in the wrong order then it swaps them, it then repeats the process of doing the whole array for as many times as there are elements in the array. In this way if the element that should be at the top starts of at the bottom it will "bubble" to the top_. _
 
@@ -192,7 +195,7 @@ After the ArrayList line add the line.
 Object o = new Object();
 riders.add(o);
 ```
-You will get a syntax error on the second line because you are trying to add something above Rider in the hierarchy (an object of the class Object). In this case we want this to happen because this is an ArrayList with associated code to deal with Riders, we don’t want Strings and Times ever being in there (the key Software Engineering principle is that this code could be reused in the future and we don’t want our main code crashing in the future because it can’t compare wattsPerKilo of a Time!). If you remove the `<Rider>` from the ArrayList declaration, you will have removed the restriction and the syntax error will disappear. Quick! Put it back, we aren’t writing sloppy Python here!
+You will get a syntax error on the second line because you are trying to add something above Rider in the hierarchy (an object of the class Object). In this case we want this to happen because this is an ArrayList with associated code to deal with Riders, we don’t want Strings and Times ever being in there (the key Software Engineering principle is that this code could be reused in the future and we don’t want our main code crashing in the because it can’t compare wattsPerKilo of a Time!). If you remove the `<Rider>` from the ArrayList declaration, you will have removed the restriction and the syntax error will disappear. Quick! Put it back, we aren’t writing sloppy Python here!
 Once the riders have been added it uses a single line to sort it (ok here there are only four but there could be 2002).
 ```Java
 Collections.sort( riders, new RiderComparitor());
