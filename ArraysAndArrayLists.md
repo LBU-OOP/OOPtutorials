@@ -127,7 +127,7 @@ Say I have a class to represent a bike rider.
 		
 	}
 ```
-_Interesting note: Watts Per Kilo is how string a rider is. A more muscular and heavy rider will generally be able to produce more watts because they have bigger muscles, but their extra weight will drag them back on the climbs.  Watts per kilo divides their weight by how much power they can produce (in watts). It give a better representation of how fast a rider will go (especially up hill).
+_Interesting note: Watts Per Kilo is how strong a rider is. A more muscular and heavy rider will generally be able to produce more watts because they have bigger muscles, but their extra weight will drag them back on the climbs.  Watts per kilo divides their weight by how much power they can produce (in watts). It give a better representation of how fast a rider will go (especially up hill). This sort of thing bothers Formula 1 drivers too.
 The question is, how do we sort riders? On name? On Team? On wattsPerKilo? The answer is any and maybe all depending on the circumstances. The upshot is that Java Standard Libraries (and it’s the same for all languages), while wanting to be helpful can’t possibly provide generic sorting abilities. But what they can do is allow us to tell it how to compare two objects and then sort based on that._
 
 So here we could provide a method to compare two Rider objects an any of those attributes. We could do one for each attribute and we could even do one that used multiple attributes (i.e. compare one attribute and if they are the same compare another, here we might put them in alpabetical order if their watsPerKilo is the same). We can then use one of the standard collection classes to do the actual sorting. Enter ArrayList.
